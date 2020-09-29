@@ -1,0 +1,79 @@
+server:
+  tomcat:
+    #最大工作线程数，默认200, 4核8g内存，线程数经验值800
+    #操作系统做线程之间的切换调度是有系统开销的，所以不是越多越好。
+    threads:
+      max: 1000
+    #最小工作空闲线程数，默认10。（适当增大一些，以便应对突然增长的访问量）
+      min-spare: 100
+    #等待队列长度，默认100。
+    accept-count: 1000
+    max-connections: 20000
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /mall
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 40000
+          #信号量
+          strategy: SEMAPHORE
+          semaphore:
+            # semaphore应该占整个容器（tomcat）的线程池的一小部分。
+            maxConcurrentRequests: 800
+      fallback:
+        isolation:
+          semaphore:
+            # 只在信号量隔离策略中有效，建议设置大一些，这样并发数达到execution最大请求数时，会直接调用fallback，而并发数达到fallback最大请求数时会被拒绝和抛出异常。
+            maxConcurrentRequests: 3000
+
+#  threadpool:
+#    default:
+#      coreSize: 200 #并发执行的最大线程数，默认10
+#      maxQueueSize: 1000 #BlockingQueue的最大队列数，默认值-1
+#      queueSizeRejectionThreshold: 800 #即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝，默认值5
+
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 20000
+  OkToRetryOnAllOperations: false
+  MaxAutoRetriesNextServer: 1
+  MaxAutoRetries: 1
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+feign:
+  compression:
+    request:
+      enabled: true  #开启请求压缩功能
+      mime-types: text/xml;application/xml;application/json #指定压缩请求数据类型
+      min-request-size: 2048  #如果传输超过该字节，就对其进行压缩
+    response:
+      #开启响应压缩功能
+      enabled:  true
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          sleuth: debug
+
