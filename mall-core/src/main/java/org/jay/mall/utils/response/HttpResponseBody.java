@@ -71,13 +71,17 @@ public class HttpResponseBody<E> implements Serializable {
         return new HttpResponseBody<>(ResponseCodeConstant.SUCCESS, message,singleData);
     }
 
+    public static <T> HttpResponseBody<T> successResponse(T singleData) {
+        return new HttpResponseBody<>(ResponseCodeConstant.SUCCESS, null,singleData);
+    }
+
     public static HttpResponseBody failResponse(String message) {
         //message可能长这样：
 		/* 你没看错，就是有两个 “此手机号码已经被注册”
 		* cn.enjoy.core.exception.BusinessException: ~此手机号码已经被注册
    cn.enjoy.core.exception.BusinessException: ~此手机号码已经被注册
-    at com.pzh.sys.service.impl.UserServiceImpl.register(UserServiceImpl.java:536)
-	at com.pzh.sys.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$c0ec0773.invoke(<generated>)
+    at com.pzh.sys.org.mall.service.impl.UserServiceImpl.register(UserServiceImpl.java:536)
+	at com.pzh.sys.org.mall.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$c0ec0773.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
 	...
 		* */

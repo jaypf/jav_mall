@@ -1,6 +1,7 @@
 package org.mall;
 
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,12 +9,11 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @ClassName WebServerApplication
+ * @ClassName ProductServerApplication
  * @Description TODO
  * @Author Jay.Jia
  * @Date 2020/9/24 16:11
@@ -25,18 +25,18 @@ import org.springframework.web.client.RestTemplate;
 @RefreshScope
 //开启断路器功能
 @EnableCircuitBreaker
-@EnableFeignClients(basePackages = {"org.mall.service.feign"})
+//@EnableFeignClients(basePackages = {"com.demo.org.mall.service.feign"})
 //开启重试功能
 //@EnableRetry
-//@MapperScan("com.demo.mapper")
-public class WebServerApplication implements CommandLineRunner {
+@MapperScan("org.mall.mapper")
+public class ProductServerApplication implements CommandLineRunner {
     public static void main(String[] args) {
-        SpringApplication.run(WebServerApplication.class, args);
+        SpringApplication.run(ProductServerApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("================WEB-SERVER START SUCCESS!!!=====================");
+        log.info("================PRODUCT-SERVER START SUCCESS!!!=====================");
     }
 
     @Bean
