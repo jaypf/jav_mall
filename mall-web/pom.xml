@@ -125,11 +125,18 @@
       <artifactId>ehcache</artifactId>
     </dependency>
 
+    <!-- redis -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+
     <!-- mysql -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
+
     <!--druid-->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -152,7 +159,6 @@
       <artifactId>springfox-swagger2</artifactId>
       <version>${swagger.version}</version>
     </dependency>
-
     <dependency>
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger-ui</artifactId>

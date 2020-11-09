@@ -75,6 +75,10 @@ public class HttpResponseBody<E> implements Serializable {
         return new HttpResponseBody<>(ResponseCodeConstant.SUCCESS, null,singleData);
     }
 
+    public static boolean isSuccess(HttpResponseBody res){
+        return ResponseCodeConstant.SUCCESS.equals(res.code);
+    }
+
     public static HttpResponseBody failResponse(String message) {
         //message可能长这样：
 		/* 你没看错，就是有两个 “此手机号码已经被注册”
