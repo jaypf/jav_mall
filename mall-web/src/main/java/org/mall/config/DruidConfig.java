@@ -4,6 +4,7 @@ import com.alibaba.druid.filter.config.ConfigTools;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import io.seata.rm.datasource.DataSourceProxy;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,6 +17,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
@@ -159,6 +161,21 @@ public class DruidConfig {
         DynamicDataSourceContextHolder.dataSourceIds.add("ds1");
         DynamicDataSourceContextHolder.dataSourceIds.add("ds2");
         return dynamicDataSource;
+    }
+
+    /**
+     * @Description 对ds1做分布式事务seata的数据源配置（跟上边的多数据源配置，有必要时删除一个）
+     * 分布式系统中，如果当前服务参与到分布式事务中并有进行数据库的操作，则需要配置该代理数据源，
+     * 如果只是参与了分布式事务 并没有进行数据库的操作则可以不配置该代理数据源
+     * @Param []
+     * @Author Jay
+     * @Date 2020/11/15 18:29
+     * @return io.seata.rm.datasource.DataSourceProxy
+     **/
+    @Primary
+    @Bean("proxydataSource")
+    public DataSourceProxy dataSource() {
+        return new DataSourceProxy(getDs1());
     }
 
     @Bean(name = "SqlSessionFactory")

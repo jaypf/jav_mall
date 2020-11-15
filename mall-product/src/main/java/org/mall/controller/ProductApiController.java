@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jay.mall.pojo.domain.ProductEntity;
 import org.jay.mall.utils.response.HttpResponseBody;
 import org.mall.api.service.mall.product.IProductApiService;
+import org.mall.config.datasource.TargetDataSource;
 import org.mall.mapper.ProductEntityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,10 +23,19 @@ public class ProductApiController implements IProductApiService {
     @Autowired
     private ProductEntityMapper productEntityMapper;
 
+    @TargetDataSource(name = "ds1")
     @Override
     public HttpResponseBody getProductDetailByIdApi(Integer productId) {
         ProductEntity productEntity = productEntityMapper.selectByPrimaryKey(productId);
         log.debug("获取到商品【{}】详情:{}",productId,productEntity.toString());
         return HttpResponseBody.successResponse(productEntity);
+    }
+
+    @TargetDataSource(name = "ds1")
+    @Override
+    public HttpResponseBody updateProductDetailByIdApi(ProductEntity record) {
+        log.debug("获取到更新商品参数:{}",record.toString());
+        productEntityMapper.updateByPrimaryKeySelective(record);
+        return HttpResponseBody.successResponse("ok!");
     }
 }

@@ -11,8 +11,9 @@ import org.jay.mall.utils.response.HttpResponseBody;
  */
 public interface KillGoodsService {
 
-    /**ehcache测试*/
+    /** ehcache测试 */
     public HttpResponseBody ehcacheTest(Integer productId);
 
-
+    /** seata测试 */
+    public HttpResponseBody seataTest(Integer productId,String name);
 }

@@ -1,4 +1,4 @@
-package org.mall.config;
+package org.mall.pay.config;
 
 import com.alibaba.druid.filter.config.ConfigTools;
 import com.alibaba.druid.pool.DruidDataSource;
@@ -8,8 +8,8 @@ import io.seata.rm.datasource.DataSourceProxy;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.mall.config.datasource.DynamicDataSource;
-import org.mall.config.datasource.DynamicDataSourceContextHolder;
+import org.mall.pay.config.datasource.DynamicDataSource;
+import org.mall.pay.config.datasource.DynamicDataSourceContextHolder;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;

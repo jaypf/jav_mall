@@ -1,6 +1,8 @@
 package org.mall.api.service.mall.product;
 
+import org.jay.mall.pojo.domain.ProductEntity;
 import org.jay.mall.utils.response.HttpResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,5 +19,8 @@ public interface IProductApiService {
 
     @RequestMapping(value = "/detailById", method = RequestMethod.GET)
     HttpResponseBody getProductDetailByIdApi(@RequestParam("productId") Integer productId);
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    HttpResponseBody updateProductDetailByIdApi(@RequestBody ProductEntity record);
 
 }

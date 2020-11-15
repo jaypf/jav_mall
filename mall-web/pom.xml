@@ -165,6 +165,25 @@
       <version>${swagger.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-alibaba-seata</artifactId>
+      <version>2.2.0.RELEASE</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>seata-spring-boot-starter</artifactId>
+          <groupId>io.seata</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!--阿里分布式事务-->
+    <dependency>
+      <groupId>io.seata</groupId>
+      <artifactId>seata-spring-boot-starter</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+
   </dependencies>
 
   <dependencyManagement>

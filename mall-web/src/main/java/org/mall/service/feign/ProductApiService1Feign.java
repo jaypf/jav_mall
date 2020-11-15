@@ -4,7 +4,7 @@ import org.mall.api.service.mall.product.IProductApiService;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
- * @ClassName ProductApiServiceFeign
+ * @ClassName ProductApiService1Feign
  * @Description TODO
  * @Author 33505
  * @Date 2020/11/8 3:33
@@ -13,6 +13,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 @FeignClient(name = "mall-product"/*, path = "/product"*/
         /*fallback = ProductServiceFeignFallback.class,不能获取具体异常*/
         ,fallbackFactory = ServiceFeignFallbackFactory.class)
-public interface ProductApiServiceFeign extends IProductApiService {
+public interface ProductApiService1Feign extends IProductApiService {
 
 }

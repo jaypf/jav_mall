@@ -1,6 +1,7 @@
 package org.mall.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
@@ -109,6 +110,16 @@ public class KillGoodsServiceImpl implements KillGoodsService {
         return HttpResponseBody.successResponse(productEntity);
     }
 
+    @GlobalTransactional(rollbackFor = Exception.class)
+    @Override
+    public HttpResponseBody seataTest(Integer productId, String name) {
+        ProductEntity build = ProductEntity.builder().goodsId(productId).goodsName(name).build();
+        HttpResponseBody httpResponseBody = iProductApiService.updateProductDetailByIdApi(build);
+        if(productId > 1){
+            int a = 1/0;
+        }
+        return httpResponseBody;
+    }
 
 
 }
