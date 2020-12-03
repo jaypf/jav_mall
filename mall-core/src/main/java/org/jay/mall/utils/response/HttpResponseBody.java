@@ -62,6 +62,9 @@ public class HttpResponseBody<E> implements Serializable {
         this.data = data;
     }
 
+    public static HttpResponseBody successResponse() {
+        return new HttpResponseBody(ResponseCodeConstant.SUCCESS, "success");
+    }
 
     public static HttpResponseBody successResponse(String message) {
         return new HttpResponseBody(ResponseCodeConstant.SUCCESS, message);

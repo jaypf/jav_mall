@@ -9,7 +9,7 @@ import org.jay.mall.utils.response.HttpResponseBody;
  * @Date 2020/11/8 0:50
  * @Version 1.0
  */
- interface KillGoodsService {
+ interface SeckillService {
 
     /** ehcache测试 */
      HttpResponseBody ehcacheTest(Integer productId);

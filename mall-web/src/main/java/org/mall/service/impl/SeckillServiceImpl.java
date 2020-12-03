@@ -10,7 +10,7 @@ import org.jay.mall.constant.CacheConstant;
 import org.jay.mall.pojo.domain.ProductEntity;
 import org.jay.mall.utils.response.HttpResponseBody;
 import org.mall.api.service.mall.product.IProductApiService;
-import org.mall.service.KillGoodsService;
+import org.mall.service.SeckillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Service
-public class KillGoodsServiceImpl implements KillGoodsService {
+public class SeckillServiceImpl implements SeckillService {
 
 
     @Autowired
