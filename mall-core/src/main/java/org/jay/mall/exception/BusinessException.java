@@ -1,4 +1,4 @@
-package org.jay.mall.constant;
+package org.jay.mall.exception;
 
 /**
  * @ClassName BusinessException

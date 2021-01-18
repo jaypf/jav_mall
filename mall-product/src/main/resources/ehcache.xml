@@ -4,7 +4,7 @@
          updateCheck="false">
 
     <!-- 磁盘缓存位置 -->
-    <diskStore path = "E:\workspace\GitHub\jay_mall_v3\ehcache"/>
+    <diskStore path = "D:\jpf\workspace_jay\jay_mall_v2\ehcache"/>
     <!--
     eternal="false"意味着该缓存会死亡
     maxElementsInMemory="900"缓存的最大数目

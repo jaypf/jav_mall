@@ -1,6 +1,7 @@
 package org.jay.mall.utils.response;
 
-import org.jay.mall.constant.BusinessException;
+
+import org.jay.mall.exception.BusinessException;
 
 import java.io.Serializable;
 
