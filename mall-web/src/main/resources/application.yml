@@ -93,4 +93,8 @@ logging:
       springframework:
         cloud:
           sleuth: debug
-
+seata:
+  tx-service-group: mall-web-group
+  service:
+    vgroup-mapping:
+      mall-web-group: default
