@@ -221,6 +221,12 @@
 <!--      <version>3.2.0</version>-->
 <!--    </dependency>-->
 
+    <!-- 引入阿里提供的技术：TransmittableThreadLocal -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>transmittable-thread-local</artifactId>
+      <version>2.11.4</version>
+    </dependency>
   </dependencies>
 
   <dependencyManagement>
