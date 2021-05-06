@@ -1,4 +1,4 @@
-package org.mall.蚂蚁;
+package org.mall.蚂蚁呀嘿;
 
 import org.junit.Test;
 

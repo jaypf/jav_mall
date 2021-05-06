@@ -1,9 +1,8 @@
-package org.mall.蚂蚁;
+package org.mall.蚂蚁呀嘿;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

@@ -104,6 +104,8 @@ public class 树 {
         postOrderTraveralWithQueue(treeNode);
         System.out.println("===============================广度优先遍历====================================：");
         levelOrderTraversal(treeNode);
+        System.out.println("===============================锯齿遍历(先左后右)====================================：");
+        levelOrderTraversal1(createBinaryTree(new LinkedList<Integer>(Arrays.asList(new Integer[]{3,9,20,null,null,15,7}))));
     }
 
 
@@ -245,5 +247,39 @@ public class 树 {
                 queue.offer(poll.rightChild);
             }
         }
+    }
+
+
+    public static List<List<Integer>> levelOrderTraversal1(TreeNode root){
+        List<List<Integer>> ans = new LinkedList<List<Integer>>();
+        if(root == null){
+            return ans;
+        }
+
+        boolean isOrderLeft = true;
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        nodeQueue.offer(root);
+        while (!nodeQueue.isEmpty()) {
+            Deque<Integer> levelList = new LinkedList<Integer>();
+            int size = nodeQueue.size();
+            for (int i = 0; i < size; ++i) {
+                TreeNode curNode = nodeQueue.poll();
+                if (isOrderLeft) {
+                    levelList.offerLast(curNode.data);
+                } else {
+                    levelList.offerFirst(curNode.data);
+                }
+                if (curNode.leftChild != null) {
+                    nodeQueue.offer(curNode.leftChild);
+                }
+                if (curNode.rightChild != null) {
+                    nodeQueue.offer(curNode.rightChild);
+                }
+            }
+            ans.add(new LinkedList<Integer>(levelList));
+            isOrderLeft = !isOrderLeft;
+        }
+        System.out.println(ans);
+        return ans;
     }
 }

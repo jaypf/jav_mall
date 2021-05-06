@@ -1,9 +1,6 @@
-package org.mall.蚂蚁;
+package org.mall.蚂蚁呀嘿;
 
 import org.junit.Test;
-
-import java.util.Deque;
-import java.util.LinkedList;
 
 /**
  * @ClassName a19删除链表的倒数第N个结点

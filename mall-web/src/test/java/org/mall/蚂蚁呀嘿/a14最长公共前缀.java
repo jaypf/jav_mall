@@ -1,7 +1,6 @@
-package org.mall.蚂蚁;
+package org.mall.蚂蚁呀嘿;
 
 import org.junit.Test;
-import org.springframework.util.ObjectUtils;
 
 /**
  * @ClassName a14最长公共前缀
