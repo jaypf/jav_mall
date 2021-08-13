@@ -49,15 +49,17 @@ public class a21合并两个有序链表 {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode ans = new ListNode(0);
         ListNode cur = ans;
-        while (l1 != null && l2 != null){
-            if(l1.val < l2.val){
-                cur.next = l1;
-                l1 = l1.next;
+
+        while(l1 != null && l2 != null){
+            int v1 = l1 == null ? 0 : l1.val;
+            int v2 = l2 == null ? 0 : l2.val;
+            if(v1 < v2){
+                cur.next = new ListNode(v1);
+                cur = cur.next;
             }else {
-                cur.next = l2;
-                l2 = l2.next;
+                cur.next = new ListNode(v2);
+                cur = cur.next;
             }
-            cur = cur.next;
         }
         cur.next = l1 == null ? l2 : l1;
         return ans.next;
